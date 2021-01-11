@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- keyCode为13时调用 -->
+        <input type="text" v-on:keyup.13="submit">
+        <!-- 点击enter时调用 -->
+        <input type="text" v-on:keyup.enter="submit">
+        <!-- 点击enter或space时调用 -->
+        <input type="text" v-on:keyup.enter.space="alertMe">
+        <input type="text" v-on:keydown.f5="handle" >
+    </div>
+    <script>
+        
+        // 自定义按键修饰符别名
+        Vue.config.keyCodes.f5 = 116;
+
+        let vm=new Vue({
+           el:'#app',
+           data:{
+
+           },
+           methods:{
+               submit() {
+                   console.log('keyup.13');
+               },
+               alertMe() {
+                   alert("123");
+               },
+               handle() {
+                   alert('我是F5！');
+               }
+           },
+        });
+    </script>
+</body>
+
+</html>

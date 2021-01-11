@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+    <style>
+        .box {
+            border: 1px dashed #f0f;
+        }
+
+        .textColor {
+            color: #f00;
+            background-color: #eef;
+        }
+
+        .textSize {
+            font-size: 30px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 
+            v-bind中支持绑定一个对象
+            如果绑定的是一个对象，则键为对应的类名，值为对应data中的数据
+         -->
+         <!-- 
+             HTML最终渲染为HTML最终渲染为 <ul class="box textColor textSize"></ul>
+             注意：
+                textColor，textSize：对应渲染到页面上的CSS类名
+                isColor，isSize：对应Vue中data的数据，如果为true，则对应类名渲染到页面上
+                当isColor和isSize变化时，class列表将相应更新
+          -->
+        <ul class="box" v-bind:class="{textColor: isColor, textSize: isSize}" >
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <div v-bind:style="{color: activeColor, fontSize: activeSize}">对象语法</div>
+    </div>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                isColor: true,
+                isSize: true,
+                activeColor: "blue",
+                activeSize: "25px",
+            },
+            methods: {
+
+            },
+        });
+    </script>
+</body>
+
+</html>
