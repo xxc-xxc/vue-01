@@ -27,7 +27,7 @@
 <body>
     <div id="app">
         <!-- 
-            v-bind中支持绑定一个对象
+            1.v-bind中支持绑定一个对象
             如果绑定的是一个对象，则键为对应的类名，值为对应data中的数据
          -->
          <!-- 
@@ -43,6 +43,31 @@
             <li>3</li>
         </ul>
         <div v-bind:style="{color: activeColor, fontSize: activeSize}">对象语法</div>
+
+        <!-- 
+            2.绑定class
+            v-bind中支持绑定一个数组
+         -->
+         <ul class="box" :class="[classA, classB]">
+             <li>1</li>
+             <li>2</li>
+             <li>3</li>
+         </ul>
+
+         <!-- 
+             绑定对象和绑定数组的区别：
+                1.绑定对象的时候，对象的属性：要渲染的类名，对象的属性值：data中的数据
+                2.绑定数组的时候，数组里面存的是data中的数据
+          -->
+
+          <!-- 
+              3.绑定style
+           -->
+           <div v-bind:style="styleObj">绑定样式对象</div>
+           <!-- CSS属性名可以使用驼峰式(camelCase)或短横线分隔(kebab-case) -->
+           <div v-bind:style="{color: activeColor, fontSize: activeSize, background: 'red'}">内联样式</div>
+           <!-- 数组语法将多个样式对象应用到同一个元素 -->
+           <div v-bind:style="[styleObj1, styleObj2]">哈哈</div>
     </div>
     <script>
         let vm = new Vue({
@@ -52,6 +77,19 @@
                 isSize: true,
                 activeColor: "blue",
                 activeSize: "25px",
+                classA: 'textColor',
+                classB: 'textSize',
+                styleObj: {
+                    color: 'green',
+                    fontSize: '30px',
+                    backgroud: 'red',
+                },
+                styleObj1: {
+                    color: 'yellow',
+                },
+                styleObj2: {
+                    fontSize: '40px',
+                }
             },
             methods: {
 
