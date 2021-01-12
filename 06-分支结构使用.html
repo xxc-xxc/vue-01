@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <span v-if="flag">如果是true则显示，否则不显示</span>
+
+        <div v-if="type === 'A'">A</div>
+        <div v-else-if="type === 'B'">B</div>
+        <div v-else-if="type === 'C'">C</div>
+        <div v-else>Not A/B/C</div>
+
+        <!-- 
+            v-show与v-if的区别：
+            1.v-show本质就是标签display设置为none，控制隐藏
+                v-show只编译一次，后面就是控制CSS样式；而v-if则不停地创建和销毁，故v-show性能更优。
+            2.v-if是动态的向DOM树内添加或删除DOM元素
+                v-if切换有一个局部编译/卸载的过程，切换过程中合适地销毁和重建内部的事件监听和子组件。    
+         -->
+    </div>
+    <script>
+        let vm=new Vue({
+           el:'#app',
+           data:{
+               flag: false,
+               type: 'D',
+           },
+           methods:{
+
+           },
+        });
+    </script>
+</body>
+
+</html>
