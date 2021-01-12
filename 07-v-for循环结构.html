@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(item, index) in items" :key="index">
+                {{index}} = {{item.name}}
+            </li>
+            <!-- 
+                不推荐同时使用v-if和v-for
+                v-for比v-if具有更高优先级
+             -->
+             <div v-if="v == 18" v-for="(v, k, index) in obj" :key="index">
+                 {{v + '--' + k + '--' + index}}
+             </div>
+             <!-- 
+                 key的作用：
+                    给每个节点做一个唯一标识
+                    为了高效的更新虚拟DOM
+              -->
+        </ul>
+    </div>
+    <script>
+        let vm=new Vue({
+           el:'#app',
+           data:{
+               items: [
+                   {name: '徐喜超'},
+                   {name: '蔡欣欣'},
+               ],
+               obj: {
+                   name: 'zhangsan',
+                   age: 18,
+               }
+           },
+           methods:{
+
+           },
+        });
+    </script>
+</body>
+
+</html>
