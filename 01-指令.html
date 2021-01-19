@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+    <script src="js/axios.js"></script>
+    <script src="js/httpRequest.js"></script>
+    <style type="text/css">
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- 
+        指令：
+        v-cloak：解决插值闪烁问题
+        v-text：用于将数据填充到标签中，有html会一并输出
+        v-html：会解析HTML
+        v-pre：跳过编译过程，显示原始信息
+        v-once：执行一次性插值（数据变化时不会更新）
+    -->
+    <div id="app">
+        <div v-cloak>{{msg}}</div>
+        <div v-text="msg"></div>
+        <div v-html="msg"></div>
+        <div v-pre>{{msg}}</div>
+        <div v-once>{{msg}}</div>
+        <div>
+            <input type="button" value="删除" id="btn">
+        </div>
+    </div>
+
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                msg: '<h1>Hello World</h1>',
+                ids: ["2ebe1015-7fc9-4bc0-a03b-38fdd97f38ef", "4b6ec5a2-7c1e-4da1-9046-449c340316fb"]
+            },
+            methods: {
+                handle() {
+                    // this.axios.delete("http://localhost:6063/resources/batchDelete", {
+                    //     data: JSON.stringify(this.ids),
+                    // }).then(function(response) {
+                    //     console.log(response);
+                    // })
+                }
+            },
+        });
+
+        let datas = ["2ebe1015-7fc9-4bc0-a03b-38fdd97f38ef", "4b6ec5a2-7c1e-4da1-9046-449c340316fb"];
+        let btn = document.getElementById("btn");
+        btn.onclick = function() {
+            axiosDeleteRequest("http://localhost:6061/api/resources/resources/batchDelete", JSON.stringify(datas)).then(result => {
+                console.log(result);
+            })
+        }
+    </script>
+</body>
+</html>
