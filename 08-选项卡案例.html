@@ -33,6 +33,22 @@
         .tab ul li.active {
             background-color: orange;
         }
+
+        .tab div {
+            width: 500px;
+            height: 300px;
+            display: none;
+            text-align: center;
+            font-size: 30px;
+            line-height: 300px;
+            border: 1px solid blue;
+            border-top: 0px;
+        }
+
+
+        .tab div.current {
+            display: block;
+        }
     </style>
 </head>
 
@@ -42,13 +58,15 @@
             <!-- tab栏 -->
             <ul>
                 <!-- 动态绑定class -->
-                <li :class="currentIndex==index ? 'active' : ''"
-                v-for="(item, index) in list" :key="index">
+                <li @click="change(index)"
+                    :class="currentIndex == index ? 'active' : ''"
+                    v-for="(item, index) in list" :key="index">
                     {{item.title}}
                 </li>
             </ul>
             <!--  对应显示的图片 -->
-            <div v-for="(item, index) in list" :key="index">
+            <div :class="currentIndex == index ? 'current' : ''"
+            v-for="(item, index) in list" :key="index">
                 <img :src="item.path">
             </div>
         </div>
@@ -77,7 +95,9 @@
                 ]
             },
             methods: {
-
+                change(index) {
+                    this.currentIndex = index;
+                },
             },
         });
     </script>
