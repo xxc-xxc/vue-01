@@ -72,7 +72,13 @@
                 "universityCode": "333331",
             }
 
-            axios.post("http://localhost:6063/university/add", university).then(function(response) {
+            // axios.post("http://localhost:6063/university/add", university).then(function(response) {
+            //     console.log(response);
+            // }).catch(function(error) {
+            //     console.log(error);
+            // });
+
+            axios.post('http://localhost:6063/university/add', 'universityName=清华大学2&universityCode=3333312').then(function(response) {
                 console.log(response);
             }).catch(function(error) {
                 console.log(error);
