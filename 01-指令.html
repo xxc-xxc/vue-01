@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,8 +14,9 @@
         }
     </style>
 </head>
+
 <body>
-    
+
     <!-- 
         指令：
         v-cloak：解决插值闪烁问题
@@ -54,11 +56,28 @@
 
         let datas = ["2ebe1015-7fc9-4bc0-a03b-38fdd97f38ef", "4b6ec5a2-7c1e-4da1-9046-449c340316fb"];
         let btn = document.getElementById("btn");
-        btn.onclick = function() {
-            axiosDeleteRequest("http://localhost:6061/api/resources/resources/batchDelete", JSON.stringify(datas)).then(result => {
-                console.log(result);
-            })
+        btn.onclick = function () {
+            // axiosDeleteRequest("http://localhost:6061/api/resources/resources/batchDelete", JSON.stringify(datas)).then(result => {
+            //     console.log(result);
+            // });
+            // axiosPostRequst("http://localhost:6063/university/add", {
+            //     "universityName": "中山大学",
+            //     "universityCode": "11111",
+            // }).then(result => {
+            //     console.log(result);
+            // });
+            let university = {
+                "universityName": "清华大学",
+                "universityCode": "33333",
+            }
+
+            axios.post("http://localhost:6063/university/add", university).then(function(response) {
+                console.log(response);
+            }).catch(function(error) {
+                console.log(error);
+            });
         }
     </script>
 </body>
+
 </html>

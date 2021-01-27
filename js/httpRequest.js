@@ -4,16 +4,16 @@ function axiosPostRequst(url,data) {
         method: 'post',
         url: url,
         data: data,
-        transformRequest:[function(data){
-            let ret = '';
-            for(let i in data){
-                ret += encodeURIComponent(i)+'='+encodeURIComponent(data[i])+"&";
-            }
-            return ret;
-        }],
-        header:{
-            'Content-Type':'application/x-www-form-urlencoded'
-        }
+        // transformRequest:[function(data){
+        //     let ret = '';
+        //     for(let i in data){
+        //         ret += encodeURIComponent(i)+'='+encodeURIComponent(data[i])+"&";
+        //     }
+        //     return ret;
+        // }],
+        // header:{
+        //     'Content-Type':'application/x-www-form-urlencoded'
+        // }
     }).then(resp=> {
         return resp.data;
     }).catch(error=>{
