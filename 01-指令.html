@@ -8,6 +8,7 @@
     <script src="js/vue.js"></script>
     <script src="js/axios.js"></script>
     <script src="js/httpRequest.js"></script>
+    <script src="js/qs.js"></script>
     <style type="text/css">
         [v-cloak] {
             display: none;
@@ -67,8 +68,8 @@
             //     console.log(result);
             // });
             let university = {
-                "universityName": "清华大学",
-                "universityCode": "33333",
+                "universityName": "清华大学1",
+                "universityCode": "333331",
             }
 
             axios.post("http://localhost:6063/university/add", university).then(function(response) {
@@ -76,6 +77,30 @@
             }).catch(function(error) {
                 console.log(error);
             });
+
+            // let data = { param: university };
+            // const options = {
+            //     method: "POST",
+            //     headers: { "content-type": "application/x-www-form-urlencoded" },
+            //     data: qs.stringify(data),
+            //     url: "http://localhost:6063/university/add"
+            // };
+            // axios(options).then(function (response) {
+            //     console.log(response);
+            // }).catch(function (error) {
+            //     console.log(error);
+            // });
+
+            // axios.post("http://localhost:6063/university/add", {
+            //     data: qs.stringify(university),
+            //     headers: {
+            //         'Content-Type': 'application/x-www-form-urlencoded'
+            //     }
+            // }).then(function (response) {
+            //     console.log(response);
+            // }).catch(function (error) {
+            //     console.log(error);
+            // });
         }
     </script>
 </body>
